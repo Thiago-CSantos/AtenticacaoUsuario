@@ -2,9 +2,11 @@ package com.security.autenticacao.entitie;
 
 import com.security.autenticacao.dto.ProdutoDto;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.UUID;
 
+@Data
 @Entity
 @Table(name = "tb_produto")
 public class Produto {
@@ -16,6 +18,10 @@ public class Produto {
     @Column(columnDefinition = "TEXT")
     private String titulo;
     private Double preco;
+
+    public Produto() {
+
+    }
 
     public Produto(String titulo, Double preco) {
         this.titulo = titulo;

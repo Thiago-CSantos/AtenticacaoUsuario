@@ -28,9 +28,8 @@ public class ProdutoController {
 
     @GetMapping("/produto-getAll")
     public List<ProdutoDto> getAll(){
-        List<ProdutoDto> produtoDtoList = produtoRepository.findAll().stream().map(ProdutoDto::new).toList();
 
-        return produtoDtoList;
+        return produtoRepository.findAll().stream().map(ProdutoDto::new).toList();
     }
 
 }
