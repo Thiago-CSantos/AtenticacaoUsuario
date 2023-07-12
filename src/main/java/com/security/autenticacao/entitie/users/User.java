@@ -1,5 +1,6 @@
 package com.security.autenticacao.entitie.users;
 
+import com.security.autenticacao.entitie.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

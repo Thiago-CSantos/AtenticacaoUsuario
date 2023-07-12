@@ -1,4 +1,4 @@
-package com.security.autenticacao.entitie.users;
+package com.security.autenticacao.entitie.enums;
 
 public enum UserRole {
     ADMIN("admin"),
