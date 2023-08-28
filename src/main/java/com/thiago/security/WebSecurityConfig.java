@@ -20,15 +20,19 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class WebSecurityConfig {
 
     //protege todos os endpoints com HTTP Basic
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeHttpRequests((authz) -> authz
-//                        .anyRequest().authenticated()
-//                )
-//                .httpBasic(withDefaults());
-//        return http.build();
-//    }
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests((aut) -> aut
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/managers").hasRole("MANAGERS")
+                        .requestMatchers("/users").hasAnyRole("USERS","MANAGERS")
+                        .anyRequest().authenticated()
+                ).httpBasic(withDefaults());
+
+        return http.build();
+    }
 
     // Autenticação em memória
     @Bean
@@ -43,4 +47,6 @@ public class WebSecurityConfig {
                 .build();
         return new InMemoryUserDetailsManager(user);
     }
+
+
 }
